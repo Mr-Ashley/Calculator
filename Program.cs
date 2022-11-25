@@ -1,6 +1,10 @@
-﻿namespace Calculator
+﻿using System;
+using CalculatorLibrary;
+
+namespace CalculatorProgram
 {
-    public class Program
+
+    class Program
     {
         static void Main(string[] args)
         {
@@ -51,7 +55,7 @@
 
                 try
                 {
-                    result = CalculatorProgram.Calculator.DoOperation(cleanNum1, cleanNum2, op);
+                    result = calculator.DoOperation(cleanNum1, cleanNum2, op);
                     if (double.IsNaN(result))
                     {
                         Console.WriteLine("This operation will result in a mathematical error.\n");
@@ -71,7 +75,10 @@
 
                 Console.WriteLine("\n"); // Friendly linespacing.
             }
+
+            // Add call to close the JSON writer before return
+            calculator.Finish();
             return;
         }
     }
-}
+    }
